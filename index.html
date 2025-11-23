@@ -5,23 +5,6 @@
   <title>sablemeow</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    body {
-  overflow-x: hidden;
-}
-  .term-panel {
-  background: var(--term-bg);
-  border-radius: 18px;
-  border: 1px solid var(--term-border);
-  box-shadow: var(--shadow-soft);
-  padding: 10px 12px 12px;
-  font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
-  font-size: 13px;
-  color: var(--term-text);
-  overflow-x: auto;
-  white-space: pre-wrap;
-  min-height: 180px;
-  }
-}
     :root {
       --bg: #020617;
       --bg-alt: #030712;
@@ -35,8 +18,7 @@
       --chip-bg: rgba(15, 23, 42, 0.9);
       --card-bg: rgba(15, 23, 42, 0.96);
       --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.9);
-    } 
-    
+    }
 
     body.theme-light {
       --bg: #fff7ed;
@@ -93,6 +75,7 @@
       top: 0;
       z-index: 20;
       margin-bottom: 18px;
+      opacity: 0;
     }
 
     .topbar-inner {
@@ -262,6 +245,7 @@
       display: flex;
       justify-content: center;
       padding: 10px 0;
+      opacity: 0;
     }
 
     .pfp-blob {
@@ -297,6 +281,7 @@
 
     .hero-text {
       padding: 4px 4px 4px 2px;
+      opacity: 0;
     }
 
     .eyebrow {
@@ -337,6 +322,7 @@
       background: var(--chip-bg);
       border: 1px solid rgba(148, 163, 184, 0.6);
       color: var(--text-soft);
+      opacity: 0;
     }
 
     body.theme-light .chip {
@@ -354,10 +340,9 @@
       color: var(--text-soft);
     }
 
-    /* terminal panel */
-
     .section {
       margin-bottom: 22px;
+      opacity: 0;
     }
 
     .section-title {
@@ -410,6 +395,7 @@
 
     .line {
       white-space: pre;
+      opacity: 0;
     }
 
     .prompt {
@@ -424,8 +410,6 @@
       height: 6px;
     }
 
-    /* projects */
-
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -439,6 +423,7 @@
       padding: 10px 12px 12px;
       box-shadow: var(--shadow-soft);
       font-size: 13px;
+      opacity: 0;
     }
 
     .card-tag {
@@ -462,9 +447,479 @@
       color: var(--text-soft);
     }
 
-    /* contacts */
-
     .contact-term {
+      margin-top: 6px;
+    }
+
+    .cmd-link {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      align-items: center;
+      margin-bottom: 4px;
+      cursor: pointer;
+      opacity: 0;
+    }
+
+    .cmd {
+      color: #4ade80;
+    }
+
+    .arrow {
+      color: var(--term-text);
+    }
+
+    .target {
+      color: #a5b4fc;
+      text-decoration: underline;
+    }
+
+    body.theme-light .target {
+      color: #7c2d12;
+    }
+
+    .footer {
+      margin-top: 18px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-soft);
+      opacity: 0;
+    }
+
+    .footer span {
+      color: var(--accent);
+    }
+
+    .sablecat {
+      position: fixed;
+      right: 14px;
+      bottom: 18px;
+      z-index: 40;
+      user-select: none;
+      opacity: 0;
+    }
+
+    .sablecat-bubble {
+      background: rgba(15, 23, 42, 0.96);
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      padding: 6px 10px 6px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-soft);
+      cursor: pointer;
+      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.95);
+      transform-origin: bottom right;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    body.theme-light .sablecat-bubble {
+      background: rgba(255, 247, 237, 0.98);
+      border-color: rgba(248, 171, 133, 0.9);
+      box-shadow: 0 14px 28px rgba(248, 171, 133, 0.7);
+      color: #7c2d12;
+    }
+
+    .sablecat-face {
+      font-size: 17px;
+    }
+
+    .sablecat-line {
+      font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
+        "Courier New", monospace;
+      font-size: 11px;
+    }
+
+    .sablecat-bubble.pop {
+      animation: pop 320ms ease-out, float 3s ease-in-out 320ms infinite;
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-3px);
+      }
+    }
+
+    @keyframes pop {
+      0% {
+        transform: scale(1);
+      }
+      35% {
+        transform: scale(1.08) translateY(-3px);
+      }
+      70% {
+        transform: scale(0.97);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--term-text);
+      margin-left: 2px;
+      animation: blink 1s infinite;
+      vertical-align: text-bottom;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    @media (max-width: 520px) {
+      .topbar-inner {
+        gap: 6px;
+      }
+      .brand-text-sub {
+        display: none;
+      }
+      .hero {
+        gap: 10px;
+      }
+      .pfp-inner {
+        width: 130px;
+        height: 130px;
+      }
+    }
+  </style>
+</head>
+<body class="theme-dark">
+  <div class="page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="brand-icon">꒰🐾꒱</div>
+          <div>
+            <div class="brand-text-main">sablemeow</div>
+            <div class="brand-text-sub">a tiny corner of the internet</div>
+          </div>
+        </div>
+        <button class="projects-btn" type="button" id="projectsBtn">
+          <span>// projects</span>
+          <span>↧</span>
+        </button>
+        <div class="theme-toggle">
+          <span>☀️</span>
+          <label class="switch">
+            <input type="checkbox" id="themeSwitch" />
+            <span class="track"><span class="thumb"></span></span>
+          </label>
+          <span>🌙</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="pfp-wrap">
+          <div class="pfp-blob">
+            <div class="pfp-inner">
+              <img src="https://placekitten.com/400/400" alt="sablemeow pfp" />
+            </div>
+          </div>
+        </div>
+        <div class="hero-text">
+          <div class="eyebrow">hello there</div>
+          <h1 class="hero-title">
+            i'm <span>sablemeow</span> (sablecat)
+          </h1>
+          <p class="hero-sub">
+            cs learner from india who likes messing with devices, terminals and
+            cute internet things. slowly turning confusion into experience.
+          </p>
+          <div class="chips">
+            <div class="chip accent">python</div>
+            <div class="chip">termux • cmd • powershell</div>
+            <div class="chip">rooting / jailbreak curious</div>
+          </div>
+          <p class="hero-note">
+            this site is my little status screen – bio, skills, projects and
+            links in one place.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">terminal bio</h2>
+        <div class="term-panel">
+          <div class="term-header">
+            <span class="dot"></span><span class="dot"></span
+            ><span class="dot"></span>
+            <span class="term-title">sable@sablebox: ~</span>
+          </div>
+
+          <div class="line" data-type="command">
+            <span class="prompt">$</span> <span class="kw">./bio</span>
+          </div>
+          <div class="line" data-type="output">name      : sablemeow</div>
+          <div class="line" data-type="output">aka       : sablecat</div>
+          <div class="line" data-type="output">from      : india</div>
+          <div class="line" data-type="output">
+            vibe      : learning, tinkering, breaking (a bit)
+          </div>
+          <div class="line" data-type="output">status    : online and mildly confused</div>
+
+          <div class="term-spacer"></div>
+
+          <div class="line" data-type="command">
+            <span class="prompt">$</span> <span class="kw">./languages</span>
+          </div>
+          <div class="line" data-type="output">> python            # main focus right now</div>
+          <div class="line" data-type="output">
+            > english / hindi   # human languages i use
+          </div>
+
+          <div class="term-spacer"></div>
+
+          <div class="line" data-type="command">
+            <span class="prompt">$</span> <span class="kw">./skills</span>
+          </div>
+          <div class="line" data-type="output">[ tech basics ]</div>
+          <div class="line" data-type="output">> termux basics</div>
+          <div class="line" data-type="output">> windows cmd</div>
+          <div class="line" data-type="output">> powershell</div>
+          <div class="term-spacer"></div>
+          <div class="line" data-type="output">[ device knowledge ]</div>
+          <div class="line" data-type="output">> android rooting concepts</div>
+          <div class="line" data-type="output">> bootloader / custom rom basics</div>
+          <div class="line" data-type="output">> jailbreak idea level (learning more)</div>
+          <div class="term-spacer"></div>
+          <div class="line" data-type="output">[ mindset ]</div>
+          <div class="line" data-type="output">> curious by default</div>
+          <div class="line" data-type="output">> okay with breaking & then fixing</div>
+          <div class="line" data-type="output">> loves learning from mistakes</div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <h2 class="section-title">// projects</h2>
+        <div class="projects-grid">
+          <article class="card">
+            <div class="card-tag">[ building ]</div>
+            <h3 class="card-title">this website</h3>
+            <p class="card-text">
+              a cute terminal-style home for sablemeow. dark/light mode,
+              little cat buddy and a place to list whatever i learn or make.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-tag">[ learning ]</div>
+            <h3 class="card-title">python experiments</h3>
+            <p class="card-text">
+              small scripts, random tests and tiny ideas while i get more
+              comfortable with python and basic cs concepts.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-tag">[ idea ]</div>
+            <h3 class="card-title">device tinkering notes</h3>
+            <p class="card-text">
+              a place to collect tips about rooting, bootloaders, roms and
+              tools, written in simple language once i learn more.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="section-title">contacts</h2>
+        <div class="term-panel contact-term">
+          <div class="term-header">
+            <span class="dot"></span><span class="dot"></span
+            ><span class="dot"></span>
+            <span class="term-title">links@sablebox: ~</span>
+          </div>
+
+          
+            href="https://github.com/sablemeow"
+            target="_blank"
+            class="cmd-link"
+          >
+            <span class="cmd">$ open github</span>
+            <span class="arrow">-&gt;</span>
+            <span class="target">github.com/sablemeow</span>
+          </a>
+
+          
+            href="https://discord.com/users/000000000000000000"
+            target="_blank"
+            class="cmd-link"
+          >
+            <span class="cmd">$ open discord</span>
+            <span class="arrow">-&gt;</span>
+            <span class="target">@sablecat</span>
+          </a>
+
+          <a href="mailto:sable@sablemeow.space" class="cmd-link">
+            <span class="cmd">$ mail sable</span>
+            <span class="arrow">-&gt;</span>
+            <span class="target">sable@sablemeow.space</span>
+          </a>
+        </div>
+      </section>
+
+      <div class="footer">
+        made with <span>🐾</span> by sablemeow • hosted on github pages
+      </div>
+    </main>
+  </div>
+
+  <div class="sablecat">
+    <div class="sablecat-bubble" id="sablecatBubble">
+      <div class="sablecat-face">=＾• ⋏ •＾=</div>
+      <div class="sablecat-line" id="sablecatText">&gt; tap me</div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16"></script>
+  <script>
+    (function () {
+      const body = document.body;
+      const switchInput = document.getElementById("themeSwitch");
+      const saved = localStorage.getItem("sable-theme");
+
+      if (saved === "light") {
+        body.classList.remove("theme-dark");
+        body.classList.add("theme-light");
+        switchInput.checked = true;
+      } else {
+        body.classList.remove("theme-light");
+        body.classList.add("theme-dark");
+        switchInput.checked = false;
+      }
+
+      switchInput.addEventListener("change", () => {
+        const isDark = !switchInput.checked;
+        if (isDark) {
+          body.classList.remove("theme-light");
+          body.classList.add("theme-dark");
+          localStorage.setItem("sable-theme", "dark");
+        } else {
+          body.classList.remove("theme-dark");
+          body.classList.add("theme-light");
+          localStorage.setItem("sable-theme", "light");
+        }
+      });
+
+      const projectsBtn = document.getElementById("projectsBtn");
+      const projects = document.getElementById("projects");
+      projectsBtn.addEventListener("click", () => {
+        projects.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+
+      const bubble = document.getElementById("sablecatBubble");
+      const textEl = document.getElementById("sablecatText");
+      const lines = [
+        "> nyaa~",
+        "> hello human",
+        "> keep learning python",
+        "> don't brick your phone pls",
+        "> drink some water",
+        "> you're doing great!",
+        "> take a break maybe?",
+        "> tap me"
+      ];
+      let idx = 0;
+
+      bubble.addEventListener("click", () => {
+        idx = (idx + 1) % lines.length;
+        
+        anime({
+          targets: textEl,
+          opacity: [1, 0],
+          duration: 150,
+          easing: 'easeInQuad',
+          complete: () => {
+            textEl.textContent = lines[idx];
+            anime({
+              targets: textEl,
+              opacity: [0, 1],
+              duration: 150,
+              easing: 'easeOutQuad'
+            });
+          }
+        });
+
+        bubble.classList.remove("pop");
+        void bubble.offsetWidth;
+        bubble.classList.add("pop");
+      });
+
+      // entrance animations
+      anime({
+        targets: '.topbar',
+        opacity: [0, 1],
+        translateY: [-20, 0],
+        duration: 800,
+        easing: 'easeOutCubic',
+        delay: 100
+      });
+
+      anime({
+        targets: '.pfp-wrap',
+        opacity: [0, 1],
+        scale: [0.85, 1],
+        duration: 900,
+        easing: 'easeOutElastic(1, .6)',
+        delay: 300
+      });
+
+      anime({
+        targets: '.hero-text',
+        opacity: [0, 1],
+        translateX: [-30, 0],
+        duration: 700,
+        easing: 'easeOutCubic',
+        delay: 500
+      });
+
+      anime({
+        targets: '.chip',
+        opacity: [0, 1],
+        translateY: [15, 0],
+        duration: 600,
+        easing: 'easeOutCubic',
+        delay: anime.stagger(80, { start: 700 })
+      });
+
+      anime({
+        targets: '.section',
+        opacity: [0, 1],
+        translateY: [25, 0],
+        duration: 650,
+        easing: 'easeOutCubic',
+        delay: anime.stagger(120, { start: 900 })
+      });
+
+      anime({
+        targets: '.card',
+        opacity: [0, 1],
+        translateY: [20, 0],
+        scale: [0.95, 1],
+        duration: 550,
+        easing: 'easeOutCubic',
+        delay: anime.stagger(100, { start: 1300 })
+      });
+
+      anime({
+        targets: '.footer',
+        opacity: [0, 1],
+        translateY: [10, 0],
+        duration: 500,
+        easing: 'easeOutCubic',ontact-term {
       margin-top: 6px;
     }
 
@@ -805,3 +1260,309 @@
   </script>
 </body>
   </html>
+delay: 1600
+      });
+
+      anime({
+        targets: '.sablecat',
+        opacity: [0, 1],
+        scale: [0.7, 1],
+        duration: 600,
+        easing: 'easeOutBack',
+        delay: 1800
+      });
+
+      // terminal typing effect with humanish delays
+      setTimeout(() => {
+        const termLines = document.querySelectorAll('.line');
+        let currentDelay = 0;
+
+        termLines.forEach((line, index) => {
+          const isCommand = line.getAttribute('data-type') === 'command';
+          const text = line.textContent;
+          
+          // clear the text initially
+          line.textContent = '';
+          line.style.opacity = '1';
+
+          if (isCommand) {
+            // commands type faster with cursor
+            currentDelay += Math.random() * 200 + 150; // random pause before command
+            
+            setTimeout(() => {
+              const cursor = document.createElement('span');
+              cursor.className = 'cursor';
+              line.appendChild(cursor);
+
+              new Typed(line, {
+                strings: [text],
+                typeSpeed: 45 + Math.random() * 25, // humanish variation
+                showCursor: false,
+                onComplete: () => {
+                  setTimeout(() => {
+                    cursor.remove();
+                  }, 200);
+                }
+              });
+            }, currentDelay);
+            
+            currentDelay += text.length * 55 + 300; // time for typing + small pause
+          } else {
+            // output appears faster, sometimes in chunks
+            currentDelay += Math.random() * 40 + 20;
+            
+            setTimeout(() => {
+              // simulate output appearing with slight delay
+              anime({
+                targets: line,
+                opacity: [0, 1],
+                duration: 150 + Math.random() * 100,
+                easing: 'easeOutQuad',
+                begin: () => {
+                  line.textContent = text;
+                }
+              });
+            }, currentDelay);
+            
+            currentDelay += 120 + Math.random() * 80;
+          }
+        });
+      }, 1200);
+
+      // contact links appear with stagger
+      setTimeout(() => {
+        anime({
+          targets: '.cmd-link',
+          opacity: [0, 1],
+          translateX: [-15, 0],
+          duration: 450,
+          easing: 'easeOutCubic',
+          delay: anime.stagger(140)
+        });
+      }, 2500);
+
+      // subtle hover animations for cards
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          anime({
+            targets: this,
+            translateY: -4,
+            scale: 1.02,
+            duration: 300,
+            easing: 'easeOutCubic'
+          });
+        });
+
+        card.addEventListener('mouseleave', function() {
+          anime({
+            targets: this,
+            translateY: 0,
+            scale: 1,
+            duration: 300,
+            easing: 'easeOutCubic'
+          });
+        });
+      });
+
+      // subtle hover for links
+      document.querySelectorAll('.cmd-link').forEach(link => {
+        link.addEventListener('mouseenter', function() {
+          anime({
+            targets: this,
+            translateX: 3,
+            duration: 250,
+            easing: 'easeOutQuad'
+          });
+          
+          anime({
+            targets: this.querySelector('.arrow'),
+            translateX: [0, 3],
+            duration: 250,
+            easing: 'easeOutQuad'
+          });
+        });
+
+        link.addEventListener('mouseleave', function() {
+          anime({
+            targets: this,
+            translateX: 0,
+            duration: 250,
+            easing: 'easeOutQuad'
+          });
+          
+          anime({
+            targets: this.querySelector('.arrow'),
+            translateX: 0,
+            duration: 250,
+            easing: 'easeOutQuad'
+          });
+        });
+      });
+
+      // pfp blob subtle morph animation
+      const pfpBlob = document.querySelector('.pfp-blob');
+      if (pfpBlob) {
+        setInterval(() => {
+          const morphs = [
+            '55% 45% 60% 40% / 55% 60% 40% 45%',
+            '50% 50% 55% 45% / 60% 40% 50% 50%',
+            '45% 55% 50% 50% / 50% 55% 45% 55%',
+            '60% 40% 45% 55% / 55% 45% 60% 40%'
+          ];
+          const randomMorph = morphs[Math.floor(Math.random() * morphs.length)];
+          
+          anime({
+            targets: pfpBlob,
+            borderRadius: randomMorph,
+            duration: 3000 + Math.random() * 2000,
+            easing: 'easeInOutSine'
+          });
+        }, 4000);
+      }
+
+      // theme switch animation enhancement
+      switchInput.addEventListener('change', function() {
+        anime({
+          targets: '.thumb',
+          scale: [1, 1.15, 1],
+          duration: 300,
+          easing: 'easeOutElastic(1, .5)'
+        });
+
+        // subtle page flash
+        const overlay = document.createElement('div');
+        overlay.style.cssText = `
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 9999;
+          background: ${this.checked ? 'rgba(255,255,255,0.4)' : 'rgba(0,0,0,0.4)'};
+        `;
+        document.body.appendChild(overlay);
+        
+        anime({
+          targets: overlay,
+          opacity: [0.4, 0],
+          duration: 400,
+          easing: 'easeOutQuad',
+          complete: () => overlay.remove()
+        });
+      });
+
+      // projects button pulse on hover
+      projectsBtn.addEventListener('mouseenter', function() {
+        anime({
+          targets: this.querySelector('span:last-child'),
+          translateY: [0, 2, 0],
+          duration: 400,
+          easing: 'easeInOutQuad'
+        });
+      });
+
+      // sablecat random movements (very subtle)
+      setInterval(() => {
+        if (Math.random() > 0.7) { // 30% chance every interval
+          anime({
+            targets: '.sablecat-face',
+            rotate: [0, Math.random() > 0.5 ? 5 : -5, 0],
+            duration: 800,
+            easing: 'easeInOutQuad'
+          });
+        }
+      }, 5000);
+
+      // easter egg: rapid clicks on sablecat
+      let clickCount = 0;
+      let clickTimer = null;
+      
+      bubble.addEventListener('click', () => {
+        clickCount++;
+        
+        clearTimeout(clickTimer);
+        clickTimer = setTimeout(() => {
+          clickCount = 0;
+        }, 2000);
+
+        if (clickCount === 5) {
+          textEl.textContent = "> *excited cat noises*";
+          anime({
+            targets: '.sablecat-bubble',
+            rotate: [0, -5, 5, -5, 5, 0],
+            duration: 500,
+            easing: 'easeInOutQuad'
+          });
+          clickCount = 0;
+        } else if (clickCount === 10) {
+          textEl.textContent = "> okay okay chill :3";
+          anime({
+            targets: '.sablecat-face',
+            scale: [1, 1.3, 1],
+            duration: 600,
+            easing: 'easeOutElastic(1, .4)'
+          });
+          clickCount = 0;
+        }
+      });
+
+      // intersection observer for scroll-triggered animations
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+            entry.target.classList.add('animated');
+            
+            // add subtle highlight effect
+            anime({
+              targets: entry.target,
+              boxShadow: [
+                '0 0 0 rgba(56, 189, 248, 0)',
+                '0 0 20px rgba(56, 189, 248, 0.3)',
+                '0 0 0 rgba(56, 189, 248, 0)'
+              ],
+              duration: 1200,
+              easing: 'easeInOutQuad'
+            });
+          }
+        });
+      }, observerOptions);
+
+      // observe cards for scroll effects
+      document.querySelectorAll('.card').forEach(card => {
+        observer.observe(card);
+      });
+
+      // random sparkle effect on brand icon
+      setInterval(() => {
+        if (Math.random() > 0.5) {
+          anime({
+            targets: '.brand-icon',
+            scale: [1, 1.1, 1],
+            rotate: [0, 5, -5, 0],
+            duration: 600,
+            easing: 'easeInOutQuad'
+          });
+        }
+      }, 8000);
+
+      // add subtle breathing animation to pfp
+      anime({
+        targets: '.pfp-inner',
+        scale: [1, 1.02, 1],
+        duration: 4000,
+        easing: 'easeInOutSine',
+        loop: true
+      });
+
+      console.log('%c🐾 meow~ welcome to sablemeow\'s corner!', 'color: #38bdf8; font-size: 14px; font-weight: bold;');
+      console.log('%chelloo fellow developer! nice to see you peeking around :3', 'color: #9ca3af; font-size: 12px;');
+    })();
+  </script>
+</body>
+</html>
