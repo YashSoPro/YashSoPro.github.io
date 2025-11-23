@@ -5,6 +5,15 @@
   <title>sablemeow</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
+    body {
+  overflow-x: hidden;
+}
+
+.term-panel {
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 100%;
+}
     :root {
       --bg: #020617;
       --bg-alt: #030712;
@@ -18,52 +27,6 @@
       --chip-bg: rgba(15, 23, 42, 0.9);
       --card-bg: rgba(15, 23, 42, 0.96);
       --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.9);
-      <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-      <script>
-new Typed("#typed-terminal", {
-  strings: [`
-$ ./bio
-name   : sablemeow
-aka    : sablecat
-from   : india
-vibe   : learning, tinkering
-status : online and mildly confused
-
-$ ./languages
-> python   # main focus right now
-> english / hindi
-
-$ ./skills
-[ tech basics ]
-> termux
-> windows cmd
-> powershell
-
-[ device knowledge ]
-> rooting concepts
-> bootloader / custom rom basics
-> jailbreak idea level
-
-[ mindset ]
-> curious by default
-> okay with breaking & fixing
-> loves learning from mistakes
-`],
-  typeSpeed: 25,
-  backSpeed: 0,
-  showCursor: true,
-  cursorChar: "_"
-});
-</script>
-      body {
-  overflow-x: hidden;
-}
-
-.terminal {
-  overflow-x: auto;
-  white-space: pre-wrap;
-  word-break: break-word;
-}
     } 
     
 
@@ -684,52 +647,14 @@ $ ./skills
         <h2 class="section-title">terminal bio</h2>
         <div class="term-panel">
           <div class="term-header">
-            <span class="dot"></span><span class="dot"></span
-            ><span class="dot"></span>
-            <span class="term-title">sable@sablebox: ~</span>
-          </div>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+<span class="term-title">sable@sablebox: ~</span>
+</div>
 
-          <div class="line">
-            <span class="prompt">$</span> <span class="kw">./bio</span>
-          </div>
-          <div class="line">name      : sablemeow</div>
-          <div class="line">aka       : sablecat</div>
-          <div class="line">from      : india</div>
-          <div class="line">
-            vibe      : learning, tinkering, breaking (a bit)
-          </div>
-          <div class="line">status    : online and mildly confused</div>
-
-          <div class="term-spacer"></div>
-
-          <div class="line">
-            <span class="prompt">$</span> <span class="kw">./languages</span>
-          </div>
-          <div class="line">> python            # main focus right now</div>
-          <div class="line">
-            > english / hindi   # human languages i use
-          </div>
-
-          <div class="term-spacer"></div>
-
-          <div class="line">
-            <span class="prompt">$</span> <span class="kw">./skills</span>
-          </div>
-          <div class="line">[ tech basics ]</div>
-          <div class="line">> termux basics</div>
-          <div class="line">> windows cmd</div>
-          <div class="line">> powershell</div>
-          <div class="term-spacer"></div>
-          <div class="line">[ device knowledge ]</div>
-          <div class="line">> android rooting concepts</div>
-          <div class="line">> bootloader / custom rom basics</div>
-          <div class="line">> jailbreak idea level (learning more)</div>
-          <div class="term-spacer"></div>
-          <div class="line">[ mindset ]</div>
-          <div class="line">> curious by default</div>
-          <div class="line">> okay with breaking & then fixing</div>
-          <div class="line">> loves learning from mistakes</div>
-        </div>
+<span id="typed-terminal"></span>
+            
       </section>
 
       <section class="section" id="projects">
