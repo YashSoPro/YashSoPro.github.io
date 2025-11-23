@@ -8,11 +8,19 @@
     body {
   overflow-x: hidden;
 }
-
-.term-panel {
+  .term-panel {
+  background: var(--term-bg);
+  border-radius: 18px;
+  border: 1px solid var(--term-border);
+  box-shadow: var(--shadow-soft);
+  padding: 10px 12px 12px;
+  font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 13px;
+  color: var(--term-text);
+  overflow-x: auto;
   white-space: pre-wrap;
-  word-break: break-word;
-  max-width: 100%;
+  min-height: 180px;
+  }
 }
     :root {
       --bg: #020617;
