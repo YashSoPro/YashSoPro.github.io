@@ -77,23 +77,22 @@
       margin-bottom: 18px;
       opacity: 0;
     }
-
-    .topbar-inner {
-      backdrop-filter: blur(18px);
-      background: linear-gradient(
-        to right,
-        rgba(15, 23, 42, 0.96),
-        rgba(15, 23, 42, 0.9)
-      );
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
-      display: flex;
-      align-items: center;
-      padding: 8px 14px;
-      gap: 10px;
-    }
-
+.topbar-inner {
+  backdrop-filter: blur(18px);
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.96),
+    rgba(15, 23, 42, 0.9)
+  );
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* <<< IMPORTANT */
+  padding: 8px 14px;
+  gap: 10px;
+}
     body.theme-light .topbar-inner {
       background: rgba(255, 247, 237, 0.92);
       border-color: rgba(248, 171, 133, 0.7);
@@ -161,11 +160,14 @@
       color: var(--text);
     }
 .theme-toggle {
+.theme-toggle {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+  margin-left: auto; /* right side fix */
 }
 
+/* toggle wrapper */
 .switch {
   position: relative;
   display: inline-block;
@@ -175,6 +177,7 @@
   display: none;
 }
 
+/* track default (dark) */
 .track {
   width: 54px;
   height: 24px;
@@ -186,6 +189,7 @@
   transition: background 0.3s ease;
 }
 
+/* thumb */
 .thumb {
   width: 18px;
   height: 18px;
@@ -200,15 +204,8 @@
   transform: translateX(30px);
 }
 
-/* light theme track */
-body.theme-light .track {
-  background: #ffd6b5;
-}
-
-body.theme-light .thumb {
-  background: #111827;
-  box-shadow: 0 0 10px rgba(15, 23, 42, 0.5);
-}
+/* 🌞 LIGHT MODE FIXES */
+body.theme-light .theme-toggle span
 
     .switch input:checked + .track .thumb {
       transform: translateX(30px);
@@ -743,42 +740,33 @@ body.theme-light .thumb {
           </article>
         </div>
       </section>
+<section class="section">
+  <h2 class="section-title">contacts</h2>
+  <div class="term-panel contact-term">
+    <div class="term-header">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="term-title">links@sablebox: ~</span>
+    </div>
 
-      <section class="section">
-        <h2 class="section-title">contacts</h2>
-        <div class="term-panel contact-term">
-          <div class="term-header">
-            <span class="dot"></span><span class="dot"></span
-            ><span class="dot"></span>
-            <span class="term-title">links@sablebox: ~</span>
-          </div>
+    <a href="https://github.com/YashSoPro" class="cmd-link" target="_blank">
+      <span class="cmd">$ open github</span>
+      <span class="arrow">-&gt;</span>
+      <span class="target">github.com/YashSoPro</span>
+    </a>
 
+    <a href="https://discord.com/users/sablemeow" class="cmd-link" target="_blank">
+      <span class="cmd">$ open discord</span>
+      <span class="arrow">-&gt;</span>
+      <span class="target">@sablemeow</span>
+    </a>
 
-            <a href="https://github.com/YashSoPro" class="cmd-link">
-  <span class="cmd">$ open github</span>
-  <span class="arrow">-&gt;</span>
-  <span class="target">github.com/YashSoPro</span>
-</a>
-
-<a href="https://discord.com/users/sablemeow" class="cmd-link">
-  <span class="cmd">$ open discord</span>
-  <span class="arrow">-&gt;</span>
-  <span class="target">@sablemeow</span>
-</a>
-
-          
-            <span class="cmd">$ open discord</span>
-            <span class="arrow">-&gt;</span>
-            <span class="target">@sablemeow</span>
-          </a>
-
-          <a href="mailto:sable@sablemeow.space" class="cmd-link">
-            <span class="cmd">$ mail sable</span>
-            <span class="arrow">-&gt;</span>
-            <span class="target">sableduck1@duck.com</span>
-          </a>
-        </div>
-      </section>
+    <a href="mailto:sableduck1@duck.com" class="cmd-link">
+      <span class="cmd">$ mail sable</span>
+      <span class="arrow">-&gt;</span>
+      <span class="target">sableduck1@duck.com</span>
+    </a>
+  </div>
+</section>
 
       <div class="footer">
         made with <span>🐾</span> by sablemeow • hosted on github pages
