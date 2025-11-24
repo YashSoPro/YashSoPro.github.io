@@ -571,9 +571,12 @@
   animation: blink 1s infinite;
   vertical-align: text-bottom;
     }
-    .typed-cursor {
+    .typed-cursor,
+.typed-cursor-blink {
   display: none !important;
-    }
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
 
     @keyframes blink {
       0%, 50% { opacity: 1; }
@@ -951,15 +954,16 @@
               line.appendChild(cursor);
 
               new Typed(line, {
-                strings: [text],
-                typeSpeed: 45 + Math.random() * 25, // humanish variation
-                showCursor: false,
-                onComplete: () => {
-                  setTimeout(() => {
-                    cursor.remove();
-                  }, 200);
-                }
-              });
+  strings: [text],
+  typeSpeed: 45 + Math.random() * 25,
+  showCursor: false,
+  cursorChar: '',
+  onComplete: () => {
+    setTimeout(() => {
+      cursor.remove();
+    }, 200);
+  }
+});
             }, currentDelay);
             
             currentDelay += text.length * 55 + 300; // time for typing + small pause
