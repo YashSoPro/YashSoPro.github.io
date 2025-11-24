@@ -159,12 +159,12 @@
       border-color: var(--accent);
       color: var(--text);
     }
-.theme-toggle {
+/* ================= TOGGLE FIX ================= */
+
 .theme-toggle {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-left: auto; /* right side fix */
 }
 
 /* toggle wrapper */
@@ -177,7 +177,7 @@
   display: none;
 }
 
-/* track default (dark) */
+/* track */
 .track {
   width: 54px;
   height: 24px;
@@ -199,14 +199,27 @@
   transition: transform 0.3s cubic-bezier(.4,0,.2,1);
 }
 
-/* move thumb when checked */
+/* slide animation */
 .switch input:checked + .track .thumb {
   transform: translateX(30px);
 }
 
-/* 🌞 LIGHT MODE FIXES */
-body.theme-light .theme-toggle span
+/* LIGHT MODE COLORS */
+body.theme-light .theme-toggle span {
+  color: #7c2d12;
+}
 
+body.theme-light .track {
+  background: #fb7185;
+  border: 1px solid #7c2d12;
+}
+
+body.theme-light .thumb {
+  background: #fff;
+  box-shadow: 0 0 10px rgba(15, 23, 42, 0.5);
+}
+
+/* ================= END TOGGLE FIX ================= */
     .switch input:checked + .track .thumb {
       transform: translateX(30px);
     }
