@@ -754,10 +754,17 @@ body.theme-light .thumb {
           </div>
 
 
-            <span class="cmd">$ open github</span>
-            <span class="arrow">-&gt;</span>
-            <span class="target">github.com/YashSoPro</span>
-          </a>
+            <a href="https://github.com/YashSoPro" class="cmd-link">
+  <span class="cmd">$ open github</span>
+  <span class="arrow">-&gt;</span>
+  <span class="target">github.com/YashSoPro</span>
+</a>
+
+<a href="https://discord.com/users/sablemeow" class="cmd-link">
+  <span class="cmd">$ open discord</span>
+  <span class="arrow">-&gt;</span>
+  <span class="target">@sablemeow</span>
+</a>
 
           
             <span class="cmd">$ open discord</span>
@@ -945,7 +952,7 @@ setTimeout(() => {
 
     line.textContent = '';
     line.style.opacity = '1';
-    line.style.whiteSpace = 'pre';
+    line.style.whiteSpace = 'pre-wrap';
 
     if (isCommand) {
       currentDelay += 300;
