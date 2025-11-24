@@ -162,63 +162,70 @@
     }
 
     .theme-toggle {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 13px;
-    }
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+}
 
-    .theme-toggle span {
-      font-size: 14px;
-    }
+.theme-toggle span {
+  font-size: 14px;
+}
 
-    .switch {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-    }
+.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
 
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
+/* REAL CLICK AREA */
+.switch input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 5;
+}
 
-    .track {
-      width: 54px;
-      height: 22px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      display: flex;
-      align-items: center;
-      padding: 2px;
-      box-sizing: border-box;
-      cursor: pointer;
-      transition: background 0.2s ease, border-color 0.2s ease;
-    }
+/* VISUAL TRACK ONLY */
+.track {
+  width: 54px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  box-sizing: border-box;
+  pointer-events: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
 
-    body.theme-light .track {
-      background: rgba(255, 247, 237, 0.96);
-      border-color: rgba(248, 171, 133, 0.9);
-    }
+body.theme-light .track {
+  background: rgba(255, 247, 237, 0.96);
+  border-color: rgba(248, 171, 133, 0.9);
+}
 
-    .thumb {
-      width: 18px;
-      height: 18px;
-      border-radius: 999px;
-      background: #f9fafb;
-      box-shadow: 0 0 10px rgba(248, 250, 252, 0.8);
-      transform: translateX(0);
-      transition: transform 0.2s ease, background 0.2s ease,
-        box-shadow 0.2s ease;
-    }
+.thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #f9fafb;
+  box-shadow: 0 0 10px rgba(248, 250, 252, 0.8);
+  transform: translateX(0);
+  transition: transform 0.2s ease, background 0.2s ease,
+    box-shadow 0.2s ease;
+}
 
-    body.theme-light .thumb {
-      background: #111827;
-      box-shadow: 0 0 10px rgba(15, 23, 42, 0.5);
-    }
+body.theme-light .thumb {
+  background: #111827;
+  box-shadow: 0 0 10px rgba(15, 23, 42, 0.5);
+}
 
+.switch input:checked + .track .thumb {
+  transform: translateX(30px);
+}
     .switch input:checked + .track .thumb {
       transform: translateX(30px);
     }
@@ -394,8 +401,10 @@
     }
 
     .line {
-      white-space: pre;
-      opacity: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  line-height: 1.6;
+  opacity: 0;
     }
 
     .prompt {
@@ -733,43 +742,33 @@
         </div>
       </section>
 
-      <section class="section">
-        <h2 class="section-title">contacts</h2>
-        <div class="term-panel contact-term">
-          <div class="term-header">
-            <span class="dot"></span><span class="dot"></span
-            ><span class="dot"></span>
-            <span class="term-title">links@sablebox: ~</span>
-          </div>
+<section class="section">
+  <h2 class="section-title">contacts</h2>
+  <div class="term-panel contact-term">
+    <div class="term-header">
+      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      <span class="term-title">links@sablebox: ~</span>
+    </div>
 
-          
-            href="https://github.com/sablemeow"
-            target="_blank"
-            class="cmd-link"
-          >
-            <span class="cmd">$ open github</span>
-            <span class="arrow">-&gt;</span>
-            <span class="target">github.com/sablemeow</span>
-          </a>
+    <a href="https://github.com/sablemeow" target="_blank" class="cmd-link">
+      <span class="cmd">$ open github</span>
+      <span class="arrow">-&gt;</span>
+      <span class="target">github.com/sablemeow</span>
+    </a>
 
-          
-            href="https://discord.com/users/000000000000000000"
-            target="_blank"
-            class="cmd-link"
-          >
-            <span class="cmd">$ open discord</span>
-            <span class="arrow">-&gt;</span>
-            <span class="target">@sablecat</span>
-          </a>
+    <a href="https://discord.com/users/sablemeow" target="_blank" class="cmd-link">
+      <span class="cmd">$ open discord</span>
+      <span class="arrow">-&gt;</span>
+      <span class="target">@sablemeow</span>
+    </a>
 
-          <a href="mailto:sable@sablemeow.space" class="cmd-link">
-            <span class="cmd">$ mail sable</span>
-            <span class="arrow">-&gt;</span>
-            <span class="target">sable@sablemeow.space</span>
-          </a>
-        </div>
-      </section>
-
+    <a href="mailto:sableduck1@duck.com" class="cmd-link">
+      <span class="cmd">$ mail sable</span>
+      <span class="arrow">-&gt;</span>
+      <span class="target">sableduck1@duck.com</span>
+    </a>
+  </div>
+</section>
       <div class="footer">
         made with <span>🐾</span> by sablemeow • hosted on github pages
       </div>
@@ -950,14 +949,12 @@
             currentDelay += Math.random() * 200 + 150; // random pause before command
             
             setTimeout(() => {
-              const cursor = document.createElement('span');
-              cursor.className = 'cursor';
-              line.appendChild(cursor);
-
               new Typed(line, {
-                strings: [text],
-                typeSpeed: 45 + Math.random() * 25, // humanish variation
-                showCursor: false,
+  strings: [text],
+  typeSpeed: 45 + Math.random() * 25,
+  showCursor: true,
+  cursorChar: '|'
+});
                 onComplete: () => {
                   setTimeout(() => {
                     cursor.remove();
