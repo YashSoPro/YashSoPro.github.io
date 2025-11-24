@@ -160,52 +160,49 @@
       border-color: var(--accent);
       color: var(--text);
     }
-
-    .theme-toggle {
+.theme-toggle {
   display: flex;
   align-items: center;
   gap: 6px;
-    }
+}
 
-    .switch {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-    }
+.switch {
+  position: relative;
+  display: inline-block;
+}
 
-    .switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .switch input:checked + .track .thumb {
-  transform: translateX(30px);
+.switch input {
+  display: none;
 }
 
 .track {
   width: 54px;
-  height: 22px;
-  border-radius: 999px;
+  height: 24px;
   background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  display: flex;
-  align-items: center;
-  padding: 2px;
+  border-radius: 999px;
+  padding: 3px;
   box-sizing: border-box;
   cursor: pointer;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition: background 0.3s ease;
 }
 
 .thumb {
   width: 18px;
   height: 18px;
-  border-radius: 999px;
-  background: #f9fafb;
-  box-shadow: 0 0 10px rgba(248, 250, 252, 0.8);
-  transform: translateX(0);
-  transition: transform 0.35s cubic-bezier(.4,0,.2,1),
-              background 0.3s ease,
-              box-shadow 0.3s ease;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+
+/* SLIDE MAGIC */
+.switch input:checked + .track .thumb {
+  transform: translateX(28px);
+}
+
+/* light theme color */
+body.theme-light .track {
+  background: #ffd6b5;
+}
 }
     body.theme-light .thumb {
       background: #111827;
@@ -345,18 +342,25 @@
     }
 
     .term-panel {
-      background: var(--term-bg);
-      border-radius: 18px;
-      border: 1px solid var(--term-border);
-      box-shadow: var(--shadow-soft);
-      padding: 10px 12px 12px;
-      font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
-        "Courier New", monospace;
-      font-size: 13px;
-      color: var(--term-text);
-      overflow-x: auto;
-      overflow-y: hidden; 
-    }
+    .term-panel {
+  background: var(--term-bg);
+  border-radius: 18px;
+  border: 1px solid var(--term-border);
+  box-shadow: var(--shadow-soft);
+  padding: 10px 12px 12px;
+  font-family: "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  font-size: 13px;
+  color: var(--term-text);
+  overflow-x: hidden;  
+  overflow-y: auto;    
+}
+
+.line {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  line-height: 1.5;
+}
 
     .term-header {
       display: flex;
