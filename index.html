@@ -932,74 +932,64 @@
       });
 
       // terminal typing effect with humanish delays
+      // terminal typing effect with humanish delays
+setTimeout(() => {
+  const termLines = document.querySelectorAll('.line');
+  let currentDelay = 0;
+
+  termLines.forEach((line, index) => {
+    const isCommand = line.getAttribute('data-type') === 'command';
+    const text = line.textContent;
+    
+    // clear the text initially
+    line.textContent = '';
+    line.style.opacity = '1';
+
+    if (isCommand) {
+      // commands type faster with cursor
+      currentDelay += Math.random() * 200 + 150;
+      
       setTimeout(() => {
-        const termLines = document.querySelectorAll('.line');
-        let currentDelay = 0;
+        const cursor = document.createElement('span');
+        cursor.className = 'cursor';
+        line.appendChild(cursor);
 
-        termLines.forEach((line, index) => {
-          const isCommand = line.getAttribute('data-type') === 'command';
-          const text = line.textContent;
-          
-          // clear the text initially
-          line.textContent = '';
-          line.style.opacity = '1';
-
-          if (isCommand) {
-            // commands type faster with cursor
-            currentDelay += Math.random() * 200 + 150; // random pause before command
-            
-            setTimeout(() => {
-              const cursor = document.createElement('span');
-              cursor.className = 'cursor';
-              line.appendChild(cursor);
-
-              new Typed(line, {
-  strings: [text],
-  typeSpeed: 45 + Math.random() * 25,
-  showCursor: false,
-  cursorChar: '',
-  onComplete: () => {
-    setTimeout(() => {
-      cursor.remove();
-    }, 200);
-  }
-});
-            }, currentDelay);
-            
-            currentDelay += text.length * 55 + 300; // time for typing + small pause
+        // Manual typing without Typed.js for commands
+        let charIndex = 0;
+        const typeInterval = setInterval(() => {
+          if (charIndex < text.length) {
+            line.insertBefore(document.createTextNode(text[charIndex]), cursor);
+            charIndex++;
           } else {
-            // output appears faster, sometimes in chunks
-            currentDelay += Math.random() * 40 + 20;
-            
+            clearInterval(typeInterval);
             setTimeout(() => {
-              // simulate output appearing with slight delay
-              anime({
-                targets: line,
-                opacity: [0, 1],
-                duration: 150 + Math.random() * 100,
-                easing: 'easeOutQuad',
-                begin: () => {
-                  line.textContent = text;
-                }
-              });
-            }, currentDelay);
-            
-            currentDelay += 120 + Math.random() * 80;
+              cursor.remove();
+            }, 200);
           }
-        });
-      }, 1200);
-
-      // contact links appear with stagger
+        }, 45 + Math.random() * 25);
+      }, currentDelay);
+      
+      currentDelay += text.length * 60 + 300;
+    } else {
+      // output appears faster
+      currentDelay += Math.random() * 40 + 20;
+      
       setTimeout(() => {
         anime({
-          targets: '.cmd-link',
+          targets: line,
           opacity: [0, 1],
-          translateX: [-15, 0],
-          duration: 450,
-          easing: 'easeOutCubic',
-          delay: anime.stagger(140)
+          duration: 150 + Math.random() * 100,
+          easing: 'easeOutQuad',
+          begin: () => {
+            line.textContent = text;
+          }
         });
-      }, 2500);
+      }, currentDelay);
+      
+      currentDelay += 120 + Math.random() * 80;
+    }
+  });
+}, 1200);
 
       // subtle hover animations for cards
       document.querySelectorAll('.card').forEach(card => {
