@@ -162,11 +162,25 @@
     }
 
     .theme-toggle {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      font-size: 13px;
-    }
+  position: relative;
+  width: 60px;
+  height: 28px;
+  background: var(--toggle-bg);
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.theme-toggle .knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.35s ease;
+}
 
     .theme-toggle span {
       font-size: 14px;
@@ -198,10 +212,10 @@
       transition: background 0.2s ease, border-color 0.2s ease;
     }
 
-    body.theme-light .track {
-      background: rgba(255, 247, 237, 0.96);
-      border-color: rgba(248, 171, 133, 0.9);
-    }
+    /* when dark mode active */
+body.dark .theme-toggle .knob {
+  transform: translateX(32px);
+}
 
     .thumb {
       width: 18px;
@@ -564,13 +578,20 @@
 
     .cursor {
   display: inline-block;
-  width: 2px;
+  width: 6px;
   height: 1em;
   background: var(--term-text);
   margin-left: 2px;
-  animation: blink 1s infinite;
   vertical-align: text-bottom;
-    }
+
+  animation: blink 1.2s steps(2, start) infinite;
+  border-radius: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
     .typed-cursor,
 .typed-cursor-blink {
   display: none !important;
@@ -930,66 +951,60 @@
         easing: 'easeOutBack',
         delay: 1800
       });
-
-      // terminal typing effect with humanish delays
-      // terminal typing effect with humanish delays
+// terminal typing effect with smooth human delay
 setTimeout(() => {
   const termLines = document.querySelectorAll('.line');
   let currentDelay = 0;
 
-  termLines.forEach((line, index) => {
+  termLines.forEach((line) => {
     const isCommand = line.getAttribute('data-type') === 'command';
     const text = line.textContent;
-    
-    // clear the text initially
+
     line.textContent = '';
     line.style.opacity = '1';
+    line.style.whiteSpace = 'pre-wrap';
 
     if (isCommand) {
-      // commands type faster with cursor
-      currentDelay += Math.random() * 200 + 150;
-      
+      currentDelay += 300;
+
       setTimeout(() => {
         const cursor = document.createElement('span');
         cursor.className = 'cursor';
         line.appendChild(cursor);
 
-        // Manual typing without Typed.js for commands
         let charIndex = 0;
+
         const typeInterval = setInterval(() => {
           if (charIndex < text.length) {
             line.insertBefore(document.createTextNode(text[charIndex]), cursor);
             charIndex++;
           } else {
             clearInterval(typeInterval);
-            setTimeout(() => {
-              cursor.remove();
-            }, 200);
+            setTimeout(() => cursor.remove(), 400);
           }
-        }, 45 + Math.random() * 25);
+        }, 80);
       }, currentDelay);
-      
-      currentDelay += text.length * 60 + 300;
+
+      currentDelay += text.length * 90 + 400;
     } else {
-      // output appears faster
-      currentDelay += Math.random() * 40 + 20;
-      
+      currentDelay += 120;
+
       setTimeout(() => {
+        line.style.opacity = '0';
+        line.textContent = text;
+
         anime({
           targets: line,
           opacity: [0, 1],
-          duration: 150 + Math.random() * 100,
-          easing: 'easeOutQuad',
-          begin: () => {
-            line.textContent = text;
-          }
+          duration: 300,
+          easing: 'easeOutQuad'
         });
       }, currentDelay);
-      
-      currentDelay += 120 + Math.random() * 80;
+
+      currentDelay += 200;
     }
   });
-}, 1200);
+}, 1000);
 
       // subtle hover animations for cards
       document.querySelectorAll('.card').forEach(card => {
