@@ -174,7 +174,10 @@
 }
 
 .switch input {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
 }
 
 /* track */
@@ -206,9 +209,9 @@
   transform: translateX(30px);
 }
 
-/* LIGHT MODE COLORS */
 body.theme-light .theme-toggle span {
   color: #7c2d12;
+  text-shadow: 0 0 4px rgba(124, 45, 18, 0.3);
 }
 
 body.theme-light .track {
