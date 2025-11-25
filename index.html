@@ -913,35 +913,49 @@ input:checked + .slider:before {
           if (isCommand) {
             currentDelay += Math.random() * 200 + 150;
             
-            setTimeout(() => {
-              new Typed(line, {
-                strings: [text],
-                typeSpeed: 45 + Math.random() * 25,
-                showCursor: false
-              });
-            }, currentDelay);
-            
-            currentDelay += text.length * 55 + 300;
-          } else {
-            currentDelay += Math.random() * 40 + 20;
-            
-            setTimeout(() => {
-              anime({
-                targets: line,
-                opacity: [0, 1],
-                duration: 150 + Math.random() * 100,
-                easing: 'easeOutQuad',
-                begin: () => {
-                  line.textContent = text;
-                }
-              });
-            }, currentDelay);
-            
-            currentDelay += 120 + Math.random() * 80;
-          }
-        });
-      }, 1200);
 
+    setTimeout(() => {
+  const termLines = document.querySelectorAll('.line');
+  let currentDelay = 0;
+
+  termLines.forEach((line) => {
+    const isCommand = line.getAttribute('data-type') === 'command';
+    const text = line.textContent;
+    
+    line.style.opacity = '1';
+
+    if (isCommand) {
+      currentDelay += Math.random() * 200 + 150;
+      
+      setTimeout(() => {
+        let i = 0;
+        const typing = setInterval(() => {
+          if (i < text.length) {
+            line.textContent = text.substring(0, i + 1);
+            i++;
+          } else {
+            clearInterval(typing);
+          }
+        }, 45 + Math.random() * 25);
+      }, currentDelay);
+      
+      currentDelay += text.length * 55 + 300;
+    } else {
+      currentDelay += Math.random() * 40 + 20;
+      
+      setTimeout(() => {
+        anime({
+          targets: line,
+          opacity: [0, 1],
+          duration: 150 + Math.random() * 100,
+          easing: 'easeOutQuad'
+        });
+      }, currentDelay);
+      
+      currentDelay += 120 + Math.random() * 80;
+    }
+  });
+}, 1200);
       setTimeout(() => {
         anime({
           targets: '.cmd-link',
