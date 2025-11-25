@@ -162,70 +162,70 @@
     }
 
     .theme-toggle {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 13px;
-}
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+    }
 
-.theme-toggle span {
-  font-size: 14px;
-}
+    .theme-toggle span {
+      font-size: 14px;
+    }
 
-.switch {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-}
+    .switch {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      width: 54px;
+      height: 22px;
+    }
 
-/* REAL CLICK AREA */
-.switch input {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  cursor: pointer;
-  z-index: 5;
-}
+    .switch input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 5;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
 
-/* VISUAL TRACK ONLY */
-.track {
-  width: 54px;
-  height: 22px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  display: flex;
-  align-items: center;
-  padding: 2px;
-  box-sizing: border-box;
-  pointer-events: none;
-  transition: background 0.2s ease, border-color 0.2s ease;
-}
+    .track {
+      width: 54px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      display: flex;
+      align-items: center;
+      padding: 2px;
+      box-sizing: border-box;
+      pointer-events: none;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
 
-body.theme-light .track {
-  background: rgba(255, 247, 237, 0.96);
-  border-color: rgba(248, 171, 133, 0.9);
-}
+    body.theme-light .track {
+      background: rgba(255, 247, 237, 0.96);
+      border-color: rgba(248, 171, 133, 0.9);
+    }
 
-.thumb {
-  width: 18px;
-  height: 18px;
-  border-radius: 999px;
-  background: #f9fafb;
-  box-shadow: 0 0 10px rgba(248, 250, 252, 0.8);
-  transform: translateX(0);
-  transition: transform 0.2s ease, background 0.2s ease,
-    box-shadow 0.2s ease;
-}
+    .thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background: #f9fafb;
+      box-shadow: 0 0 10px rgba(248, 250, 252, 0.8);
+      transform: translateX(0);
+      transition: transform 0.2s ease, background 0.2s ease,
+        box-shadow 0.2s ease;
+    }
 
-body.theme-light .thumb {
-  background: #111827;
-  box-shadow: 0 0 10px rgba(15, 23, 42, 0.5);
-}
+    body.theme-light .thumb {
+      background: #111827;
+      box-shadow: 0 0 10px rgba(15, 23, 42, 0.5);
+    }
 
-.switch input:checked + .track .thumb {
-  transform: translateX(30px);
-}
     .switch input:checked + .track .thumb {
       transform: translateX(30px);
     }
@@ -401,10 +401,10 @@ body.theme-light .thumb {
     }
 
     .line {
-  white-space: pre-wrap;
-  word-break: break-word;
-  line-height: 1.6;
-  opacity: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.6;
+      opacity: 0;
     }
 
     .prompt {
@@ -570,21 +570,6 @@ body.theme-light .thumb {
       }
     }
 
-    .cursor {
-      display: inline-block;
-      width: 2px;
-      height: 1em;
-      background: var(--term-text);
-      margin-left: 2px;
-      animation: blink 1s infinite;
-      vertical-align: text-bottom;
-    }
-
-    @keyframes blink {
-      0%, 50% { opacity: 1; }
-      51%, 100% { opacity: 0; }
-    }
-
     @media (max-width: 520px) {
       .topbar-inner {
         gap: 6px;
@@ -742,33 +727,33 @@ body.theme-light .thumb {
         </div>
       </section>
 
-<section class="section">
-  <h2 class="section-title">contacts</h2>
-  <div class="term-panel contact-term">
-    <div class="term-header">
-      <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-      <span class="term-title">links@sablebox: ~</span>
-    </div>
+      <section class="section">
+        <h2 class="section-title">contacts</h2>
+        <div class="term-panel contact-term">
+          <div class="term-header">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="term-title">links@sablebox: ~</span>
+          </div>
 
-    <a href="https://github.com/sablemeow" target="_blank" class="cmd-link">
-      <span class="cmd">$ open github</span>
-      <span class="arrow">-&gt;</span>
-      <span class="target">github.com/sablemeow</span>
-    </a>
+          <a href="https://github.com/sablemeow" target="_blank" class="cmd-link">
+            <span class="cmd">$ open github</span>
+            <span class="arrow">-&gt;</span>
+            <span class="target">github.com/sablemeow</span>
+          </a>
 
-    <a href="https://discord.com/users/sablemeow" target="_blank" class="cmd-link">
-      <span class="cmd">$ open discord</span>
-      <span class="arrow">-&gt;</span>
-      <span class="target">@sablemeow</span>
-    </a>
+          <a href="https://discord.com/users/sablemeow" target="_blank" class="cmd-link">
+            <span class="cmd">$ open discord</span>
+            <span class="arrow">-&gt;</span>
+            <span class="target">@sablemeow</span>
+          </a>
 
-    <a href="mailto:sableduck1@duck.com" class="cmd-link">
-      <span class="cmd">$ mail sable</span>
-      <span class="arrow">-&gt;</span>
-      <span class="target">sableduck1@duck.com</span>
-    </a>
-  </div>
-</section>
+          <a href="mailto:sableduck1@duck.com" class="cmd-link">
+            <span class="cmd">$ mail sable</span>
+            <span class="arrow">-&gt;</span>
+            <span class="target">sableduck1@duck.com</span>
+          </a>
+        </div>
+      </section>
       <div class="footer">
         made with <span>🐾</span> by sablemeow • hosted on github pages
       </div>
@@ -788,28 +773,14 @@ body.theme-light .thumb {
     (function () {
       const body = document.body;
       const switchInput = document.getElementById("themeSwitch");
-      const saved = localStorage.getItem("sable-theme");
-
-      if (saved === "light") {
-        body.classList.remove("theme-dark");
-        body.classList.add("theme-light");
-        switchInput.checked = true;
-      } else {
-        body.classList.remove("theme-light");
-        body.classList.add("theme-dark");
-        switchInput.checked = false;
-      }
 
       switchInput.addEventListener("change", () => {
-        const isDark = !switchInput.checked;
-        if (isDark) {
-          body.classList.remove("theme-light");
-          body.classList.add("theme-dark");
-          localStorage.setItem("sable-theme", "dark");
-        } else {
+        if (switchInput.checked) {
           body.classList.remove("theme-dark");
           body.classList.add("theme-light");
-          localStorage.setItem("sable-theme", "light");
+        } else {
+          body.classList.remove("theme-light");
+          body.classList.add("theme-dark");
         }
       });
 
@@ -857,7 +828,6 @@ body.theme-light .thumb {
         bubble.classList.add("pop");
       });
 
-      // entrance animations
       anime({
         targets: '.topbar',
         opacity: [0, 1],
@@ -931,45 +901,34 @@ body.theme-light .thumb {
         delay: 1800
       });
 
-      // terminal typing effect with humanish delays
       setTimeout(() => {
         const termLines = document.querySelectorAll('.line');
         let currentDelay = 0;
 
-        termLines.forEach((line, index) => {
+        termLines.forEach((line) => {
           const isCommand = line.getAttribute('data-type') === 'command';
           const text = line.textContent;
           
-          // clear the text initially
           line.textContent = '';
           line.style.opacity = '1';
 
           if (isCommand) {
-            // commands type faster with cursor
-            currentDelay += Math.random() * 200 + 150; // random pause before command
+            currentDelay += Math.random() * 200 + 150;
             
             setTimeout(() => {
               new Typed(line, {
-  strings: [text],
-  typeSpeed: 45 + Math.random() * 25,
-  showCursor: true,
-  cursorChar: '|'
-});
-                onComplete: () => {
-                  setTimeout(() => {
-                    cursor.remove();
-                  }, 200);
-                }
+                strings: [text],
+                typeSpeed: 45 + Math.random() * 25,
+                showCursor: false
               });
+              ```javascript
             }, currentDelay);
             
-            currentDelay += text.length * 55 + 300; // time for typing + small pause
+            currentDelay += text.length * 55 + 300;
           } else {
-            // output appears faster, sometimes in chunks
             currentDelay += Math.random() * 40 + 20;
             
             setTimeout(() => {
-              // simulate output appearing with slight delay
               anime({
                 targets: line,
                 opacity: [0, 1],
@@ -986,7 +945,6 @@ body.theme-light .thumb {
         });
       }, 1200);
 
-      // contact links appear with stagger
       setTimeout(() => {
         anime({
           targets: '.cmd-link',
@@ -998,7 +956,6 @@ body.theme-light .thumb {
         });
       }, 2500);
 
-      // subtle hover animations for cards
       document.querySelectorAll('.card').forEach(card => {
         card.addEventListener('mouseenter', function() {
           anime({
@@ -1021,7 +978,6 @@ body.theme-light .thumb {
         });
       });
 
-      // subtle hover for links
       document.querySelectorAll('.cmd-link').forEach(link => {
         link.addEventListener('mouseenter', function() {
           anime({
@@ -1056,7 +1012,6 @@ body.theme-light .thumb {
         });
       });
 
-      // pfp blob subtle morph animation
       const pfpBlob = document.querySelector('.pfp-blob');
       if (pfpBlob) {
         setInterval(() => {
@@ -1077,7 +1032,6 @@ body.theme-light .thumb {
         }, 4000);
       }
 
-      // theme switch animation enhancement
       switchInput.addEventListener('change', function() {
         anime({
           targets: '.thumb',
@@ -1086,7 +1040,6 @@ body.theme-light .thumb {
           easing: 'easeOutElastic(1, .5)'
         });
 
-        // subtle page flash
         const overlay = document.createElement('div');
         overlay.style.cssText = `
           position: fixed;
@@ -1109,7 +1062,6 @@ body.theme-light .thumb {
         });
       });
 
-      // projects button pulse on hover
       projectsBtn.addEventListener('mouseenter', function() {
         anime({
           targets: this.querySelector('span:last-child'),
@@ -1119,9 +1071,8 @@ body.theme-light .thumb {
         });
       });
 
-      // sablecat random movements (very subtle)
       setInterval(() => {
-        if (Math.random() > 0.7) { // 30% chance every interval
+        if (Math.random() > 0.7) {
           anime({
             targets: '.sablecat-face',
             rotate: [0, Math.random() > 0.5 ? 5 : -5, 0],
@@ -1131,7 +1082,6 @@ body.theme-light .thumb {
         }
       }, 5000);
 
-      // easter egg: rapid clicks on sablecat
       let clickCount = 0;
       let clickTimer = null;
       
@@ -1164,7 +1114,6 @@ body.theme-light .thumb {
         }
       });
 
-      // intersection observer for scroll-triggered animations
       const observerOptions = {
         threshold: 0.15,
         rootMargin: '0px 0px -50px 0px'
@@ -1175,7 +1124,6 @@ body.theme-light .thumb {
           if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
             entry.target.classList.add('animated');
             
-            // add subtle highlight effect
             anime({
               targets: entry.target,
               boxShadow: [
@@ -1190,12 +1138,10 @@ body.theme-light .thumb {
         });
       }, observerOptions);
 
-      // observe cards for scroll effects
       document.querySelectorAll('.card').forEach(card => {
         observer.observe(card);
       });
 
-      // random sparkle effect on brand icon
       setInterval(() => {
         if (Math.random() > 0.5) {
           anime({
@@ -1208,7 +1154,6 @@ body.theme-light .thumb {
         }
       }, 8000);
 
-      // add subtle breathing animation to pfp
       anime({
         targets: '.pfp-inner',
         scale: [1, 1.02, 1],
