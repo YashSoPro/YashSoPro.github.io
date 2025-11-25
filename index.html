@@ -899,21 +899,6 @@ input:checked + .slider:before {
         delay: 1800
       });
 
-      setTimeout(() => {
-        const termLines = document.querySelectorAll('.line');
-        let currentDelay = 0;
-
-        termLines.forEach((line) => {
-          const isCommand = line.getAttribute('data-type') === 'command';
-          const text = line.textContent;
-          
-          line.textContent = '';
-          line.style.opacity = '1';
-
-          if (isCommand) {
-            currentDelay += Math.random() * 200 + 150;
-            
-
     setTimeout(() => {
   const termLines = document.querySelectorAll('.line');
   let currentDelay = 0;
